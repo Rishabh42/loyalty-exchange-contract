@@ -5,13 +5,13 @@ contract loyalty {
 
 struct User {
     uint256 Uid;
-    bytes32 Uname;
+    string Uname;
     bool Uset;
 }
 
 struct Company {
   uint256 Cid;
-  bytes32 Cname;
+  string Cname;
   bool Cset;
 }
 
@@ -22,7 +22,7 @@ struct Company {
     owner = msg.sender;
   }
 
-  function createUser(uint256 _userId, bytes32 _userName) public {
+  function createUser(uint256 _userId, string _userName) public {
       address _userAddress = msg.sender;
       User storage user = users[_userAddress];
       // Check that the user did not already exist:
@@ -35,7 +35,7 @@ struct Company {
       });
   }
 
-  function createCompany(uint256 _companyId, bytes32 _companyName) public {
+  function createCompany(uint256 _companyId, string _companyName) public {
       address _companyAddress = msg.sender;
 
       Company storage company = companies[_companyAddress];
@@ -48,4 +48,8 @@ struct Company {
           Cset: true
       });
   }
+
+  function getUsers() public view returns (string) {
+        return users[msg.sender].name;
+    }
 }
