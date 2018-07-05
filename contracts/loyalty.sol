@@ -18,7 +18,7 @@ struct Company {
   mapping(address => User) public users;
   mapping(address => Company) public companies;
 
-  constructor loyalty() public{
+  function loyalty() public{
     owner = msg.sender;
   }
 
@@ -49,7 +49,7 @@ struct Company {
       });
   }
 
-  function getUsers() public view returns (string) {
+/*  function getUsers() public view returns (string) {
         return users[msg.sender].name;
-    }
+    } */
 }
