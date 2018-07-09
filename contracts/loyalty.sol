@@ -49,11 +49,11 @@ struct Company {
       });
   }
 
-  function balanceOf(address _owner) constant returns (uint256 balance) {
+    function balanceOf(address _owner) constant returns (uint256 balance) {
         return balances[_owner];
     }
 
-/*  function getUsers() public view returns (string) {
-        return users[msg.sender].name;
-    } */
+    function getUsers() public view returns (string) {
+        return users[msg.sender];
+    }
 }
