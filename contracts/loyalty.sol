@@ -2,6 +2,7 @@ pragma solidity ^0.4.17;
 
 contract loyalty {
   address public owner;
+  mapping(address => uint256) balances;
 
 struct User {
     uint256 Uid;
