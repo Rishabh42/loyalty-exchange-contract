@@ -5,7 +5,7 @@ contract ads {
   mapping(address => uint256) balances;
   event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
-  constructor ads(string _ad, uint price, bytes32 adID) public payable{
+  function newAd(string _ad, uint price, bytes32 adID) public payable{
     require(msg.value > price);
     redeemed.push(msg.sender);
   }

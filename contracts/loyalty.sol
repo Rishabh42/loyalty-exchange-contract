@@ -51,6 +51,7 @@ struct Company {
   }
 
     function balanceOf(address _owner) constant returns (uint256 balance) {
+         _owner = msg.sender;
         return balances[_owner];
     }
 
