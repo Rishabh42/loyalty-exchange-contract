@@ -50,12 +50,19 @@ struct Company {
       });
   }
 
-    function balanceOf(address _owner) constant returns (uint256 balance) {
+  function balanceOf(address _owner) constant returns (uint256 balance) {
          _owner = msg.sender;
         return balances[_owner];
     }
 
-   /* function getUsers() public view returns (string) {
-        return users[msg.sender];
-    } */
+  function getCompany(uint index) public view returns (string){
+        Company storage cc  = companiesArr[index];
+        return (cc.Cname);
+    }
+
+  function getUser(uint index) public view returns (string){
+         Company storage uu  = userArr[index];
+         return (uu.Uname);
+     }
+
 }
