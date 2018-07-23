@@ -8,12 +8,145 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/style.css">
+  <script type="text/javascript" src="web3.min.js"></script>
+  <script>
+    if (typeof web3 !== 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+    } else {
+      // set the provider you want from Web3.providers
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+
+    console.log(web3.eth.defaultAccount);
+
+    var loyaltyContract = web3.eth.contract([{
+        "constant": false,
+        "inputs": [{
+            "name": "_companyId",
+            "type": "uint256"
+          },
+          {
+            "name": "_companyName",
+            "type": "string"
+          }
+        ],
+        "name": "createCompany",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [{
+            "name": "_userId",
+            "type": "uint256"
+          },
+          {
+            "name": "_userName",
+            "type": "string"
+          }
+        ],
+        "name": "createUser",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "constant": true,
+        "inputs": [{
+          "name": "_owner",
+          "type": "address"
+        }],
+        "name": "balanceOf",
+        "outputs": [{
+          "name": "balance",
+          "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [{
+          "name": "",
+          "type": "address"
+        }],
+        "name": "companies",
+        "outputs": [{
+            "name": "Cid",
+            "type": "uint256"
+          },
+          {
+            "name": "Cname",
+            "type": "string"
+          },
+          {
+            "name": "Cset",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [{
+          "name": "",
+          "type": "address"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [{
+          "name": "",
+          "type": "address"
+        }],
+        "name": "users",
+        "outputs": [{
+            "name": "Uid",
+            "type": "uint256"
+          },
+          {
+            "name": "Uname",
+            "type": "string"
+          },
+          {
+            "name": "Uset",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]);
+
+    var loyalty = loyaltyContract.at(0x2b0b3a7714f819a52f2cdeab85a81943d4fd6ed1);
+    console.log(loyalty);
+  </script>
 </head>
 
 
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="newapp/index.html">Customer Loyalty Program</a>
+    <a class="navbar-brand" href="index.html">Customer Loyalty Program</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,8 +161,8 @@
         <li class="nav-item text-nowrap dropdown">
           <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign-in</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/newapp/customer.html">Customer</a>
-            <a class="dropdown-item" href="/newapp/company.html">Company</a>
+            <a class="dropdown-item" href="customer.html">Customer</a>
+            <a class="dropdown-item" onclick="registerCompany()">Company</a>
           </div>
         </li>
 
@@ -40,7 +173,7 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-4"><center>Customer Loyalty Program</center></h1>
-     
+
     </div>
   </div>
 
@@ -49,11 +182,11 @@
     <div class="row">
       <div class="col-lg-6 text-center">
         <h2>Customers</h2>
-        <p><a class="btn btn-secondary" href="/newapp/registerCustomer.html" role="button">Register &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="registerCustomer.html" role="button">Register &raquo;</a></p>
       </div>
       <div class="col-lg-6 text-center">
         <h2>Companies</h2>
-        <p> <a class="btn btn-secondary" href="/newapp/registerCompany.html" role="button">Register &raquo;</a></p>
+        <p> <a class="btn btn-secondary" href="registerCompany.html" role="button">Register &raquo;</a></p>
       </div>
     </div>
   </div>
