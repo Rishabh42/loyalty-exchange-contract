@@ -55,7 +55,7 @@ struct Company {
         return balances[_owner];
     }
 
-    function getUsers() public view returns (string) {
+   /* function getUsers() public view returns (string) {
         return users[msg.sender];
-    }
+    } */
 }
