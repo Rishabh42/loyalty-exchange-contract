@@ -55,14 +55,14 @@ struct Company {
         return balances[_owner];
     }
 
-  function getCompany(uint index) public view returns (string){
+  /*function getCompany(uint index) public view returns (string){
         Company storage cc  = companiesArr[index];
         return (cc.Cname);
     }
 
   function getUser(uint index) public view returns (string){
-         Company storage uu  = userArr[index];
-         return (uu.Uname);
-     }
+        User storage uu  = userArr[index];
+        return (uu.Uname);
+    }*/
 
 }
