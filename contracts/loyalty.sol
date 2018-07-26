@@ -8,6 +8,9 @@ struct User {
     uint256 Uid;
     string Uname;
     bool Uset;
+
+    mapping(uint256 => uint) balances;
+
 }
 
 struct Company {
@@ -34,6 +37,14 @@ struct Company {
           Uname: _userName,
           Uset: true
       });
+  }
+
+  function checkoutAd(uint256 _userId, int adsId){
+    // get baseComapny and toTransferComp, reductionValue from ads mapping
+    require(users[_userId][baseComapny]> 0){
+      users[_userId][toTransferComp] = users[_userId][toTransferComp] + reductionValue;
+      users[_userId][baseComapny] = users[_userId][toTransferComp] - reductionValue;
+    }
   }
 
   function createCompany(uint256 _companyId, string _companyName) public {
