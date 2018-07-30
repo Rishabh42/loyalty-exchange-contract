@@ -31,7 +31,7 @@ contract ads {
         return (a.name);
     }
 
-  function transfer(address _to, uint256 _amount) returns (bool success) {
+/*  function transfer(address _to, uint256 _amount) returns (bool success) {
         if (balances[msg.sender] >= _amount
             && _amount > 0
             && balances[_to] + _amount > balances[_to]) {
@@ -42,6 +42,6 @@ contract ads {
         } else {
             return false;
         }
-    }
+    } */
 
 }
