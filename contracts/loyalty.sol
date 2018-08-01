@@ -111,7 +111,7 @@ struct Ad{
 
      function earnPoints() public payable{
            require(msg.value = Ad.price);
-
+           User.points = User.points + Ad.pointsEarned;
 
      }
 
