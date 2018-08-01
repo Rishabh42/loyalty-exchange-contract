@@ -6,22 +6,24 @@ contract ads {
         string name;
         uint price;
         string id;
+        uint points;
     }
 
  // address[] public redeemed;
   Ad[] public adsArr;
-  mapping(address => uint256) balances;
+  //mapping(address => uint256) balances;
   event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
     function adCount() public view returns (uint){
         return adsArr.length;
     }
 
-  function newAd(string name, uint price, string id) public {
+  function newAd(string name, uint price, string id, uint points) public {
     Ad memory newAd = Ad({
             name: name,
             price: price,
-            id: id
+            id: id,
+            points: points    //ponts earned on redemption
         });
         adsArr.push(newAd);
   }
@@ -30,6 +32,12 @@ contract ads {
         Ad storage a  = adsArr[index];
         return (a.name);
     }
+
+  function earnPoints() public payable{
+        require(msg.value = Ad.price);
+        
+
+  }
 
 /*  function transfer(address _to, uint256 _amount) returns (bool success) {
         if (balances[msg.sender] >= _amount
