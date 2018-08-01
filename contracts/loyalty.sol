@@ -8,8 +8,8 @@ struct User {
     uint256 Uid;
     string Uname;
     bool Uset;
-
-    mapping(uint256 => uint) balances;
+    string[] public companyName;
+    uint points;
 
 }
 
@@ -26,7 +26,7 @@ struct Company {
     owner = msg.sender;
   }
 
-  function createUser(uint256 _userId, string _userName) public {
+  function createUser(uint256 _userId, string _userName, string _companyName) public {
       address _userAddress = msg.sender;
       User storage user = users[_userAddress];
       // Check that the user did not already exist:
@@ -35,6 +35,8 @@ struct Company {
       users[_userAddress] = User({
           Uid: _userId,
           Uname: _userName,
+          companyName: companyName[].push(_companyName),
+          points: companyName.length * 100;
           Uset: true
       });
   }
