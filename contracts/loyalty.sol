@@ -75,12 +75,12 @@ struct Ad{
         return balances[_owner];
     }
 
-  /*function getCompany(uint index) public view returns (string){
+  function getCompany(uint index) public view returns (string){
         Company storage cc  = companiesArr[index];
         return (cc.Cname);
     }
 
-  function getUser(uint index) public view returns (string){
+  /*function getUser(uint index) public view returns (string){
         User storage uu  = userArr[index];
         return (uu.Uname);
     }*/
@@ -114,18 +114,4 @@ struct Ad{
            User.points = User.points + Ad.pointsEarned;
 
      }
-
-     /*  function transfer(address _to, uint256 _amount) returns (bool success) {
-             if (balances[msg.sender] >= _amount
-                 && _amount > 0
-                 && balances[_to] + _amount > balances[_to]) {
-                 balances[msg.sender] -= _amount;
-                 balances[_to] += _amount;
-                 Transfer(msg.sender, _to, _amount);
-                 return true;
-             } else {
-                 return false;
-             }
-         } */
-
 }
