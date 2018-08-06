@@ -8,8 +8,8 @@ struct User {
     uint256 Uid;
     string Uname;
     bool Uset;
-    string[] public companyName;
-    uint points;
+
+    mapping(uint256 => uint) balances;
 
 }
 
@@ -19,13 +19,6 @@ struct Company {
   bool Cset;
 }
 
-struct Ad{
-    string name;
-    uint price;
-    string id;
-    uint pointsEarned;
-}
-
   mapping(address => User) public users;
   mapping(address => Company) public companies;
 
@@ -33,7 +26,7 @@ struct Ad{
     owner = msg.sender;
   }
 
-  function createUser(uint256 _userId, string _userName, string _companyName) public {
+  function createUser(uint256 _userId, string _userName) public {
       address _userAddress = msg.sender;
       User storage user = users[_userAddress];
       // Check that the user did not already exist:
@@ -42,8 +35,6 @@ struct Ad{
       users[_userAddress] = User({
           Uid: _userId,
           Uname: _userName,
-          companyName: companyName[].push(_companyName),
-          points: companyName.length * 100;
           Uset: true
       });
   }
@@ -75,43 +66,14 @@ struct Ad{
         return balances[_owner];
     }
 
-  function getCompany(uint index) public view returns (string){
+  /*function getCompany(uint index) public view returns (string){
         Company storage cc  = companiesArr[index];
         return (cc.Cname);
     }
 
-  /*function getUser(uint index) public view returns (string){
+  function getUser(uint index) public view returns (string){
         User storage uu  = userArr[index];
         return (uu.Uname);
     }*/
 
-    // address[] public redeemed;
-     Ad[] public adsArr;
-     //mapping(address => uint256) balances;
-     event Transfer(address indexed _from, address indexed _to, uint256 _value);
-
-       function adCount() public view returns (uint){
-           return adsArr.length;
-       }
-
-     function newAd(string name, uint price, string id, uint points) public {
-       Ad memory newAd = Ad({
-               name: name,
-               price: price,
-               id: id,
-               points: points    //ponts earned on redemption
-           });
-           adsArr.push(newAd);
-     }
-
-     function displayAd(uint index) public view returns (string){
-           Ad storage a  = adsArr[index];
-           return (a.name);
-       }
-
-     function earnPoints() public payable{
-           require(msg.value = Ad.price);
-           User.points = User.points + Ad.pointsEarned;
-
-     }
 }
