@@ -39,14 +39,6 @@ struct Company {
       });
   }
 
-/*  function checkoutAd(uint256 _userId, int adsId){
-    // get baseComapny and toTransferComp, reductionValue from ads mapping
-    require(users[_userId][baseComapny]> 0){
-      users[_userId][toTransferComp] = users[_userId][toTransferComp] + reductionValue;
-      users[_userId][baseComapny] = users[_userId][toTransferComp] - reductionValue;
-    }
-  }*/
-
   function createCompany(uint256 _companyId, string _companyName) public {
       address _companyAddress = msg.sender;
 
